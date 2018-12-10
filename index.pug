@@ -1,0 +1,42 @@
+-
+  let pos = [50,50]
+  let size = 100
+  //- let count = Math.floor(Math.random()*26)
+  let c = count||6
+  let arr = Array(c).fill(0).map((_,i)=>String.fromCharCode(i+65))
+
+
+svg(
+  viewBox="0 0 100 100"
+  width="200"
+)
+  circle(
+    cx="50"
+    cy="50"
+    r="50"
+    fill="transparent"
+    stroke="#08f"
+  )
+  each letter,idx in arr
+    - let rot = 360 * idx / c
+    - let zoom = 26 / c
+    g(
+      transform=`rotate(${rot},50,50)`
+    )
+      - let oi=-50
+      text.svgtext(
+        x="50"
+        y="10"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        
+        transform=` rotate(${-rot},50,10) translate(50,10) scale(${zoom}) translate(-50,-10)`
+      )= letter
+      circle(
+        cx="50"
+        cy="50"
+        r="40"
+        fill="transparent"
+        stroke="transparent"
+        stroke-width="0"
+      )
